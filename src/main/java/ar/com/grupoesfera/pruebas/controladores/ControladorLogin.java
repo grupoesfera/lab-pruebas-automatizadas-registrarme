@@ -54,32 +54,6 @@ public class ControladorLogin {
 		return new ModelAndView("login", model);
 	}
 
-	@RequestMapping(path = "/nuevo-usuario", method = RequestMethod.GET)
-	public ModelAndView nuevoUsuario() {
-		ModelMap model = new ModelMap();
-		model.put("usuario", new Usuario());
-		return new ModelAndView("nuevo-usuario", model);
-	}
-
-	@RequestMapping(path = "/registrarme", method = RequestMethod.POST)
-	public ModelAndView registrarme(@ModelAttribute("usuario") Usuario usuario) {
-		ModelMap model = new ModelMap();
-		if(!EmailValidator.getInstance().isValid(usuario.getEmail())){
-			model.put("error", "El formato del usuario no es una direccion de email válida");
-			return new ModelAndView("nuevo-usuario", model);
-		}
-		try{
-			servicioLogin.registrar(usuario);
-		} catch (UsuarioExistente e){
-			model.put("error", "El usuario ya existe");
-			return new ModelAndView("nuevo-usuario", model);
-		} catch (Exception e){
-			model.put("error", "Error al registrar el nuevo usuario");
-			return new ModelAndView("nuevo-usuario", model);
-		}
-		return new ModelAndView("redirect:/login");
-	}
-
 	// IoC setters
 	public void setServicioLogin(ServicioLogin servicioLogin) {
 		this.servicioLogin = servicioLogin;
