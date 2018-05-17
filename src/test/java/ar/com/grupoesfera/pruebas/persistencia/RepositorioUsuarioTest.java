@@ -11,10 +11,10 @@ import javax.inject.Inject;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UsuarioDaoTest extends SpringTest {
+public class RepositorioUsuarioTest extends SpringTest {
 
     @Inject
-    private RepositorioUsuario repositorioUsuario;
+    private RepositorioUsuario repositorio;
 
     @Test
     @Transactional
@@ -26,7 +26,7 @@ public class UsuarioDaoTest extends SpringTest {
         seba.setPassword("1234");
 
         // ejecucion
-        repositorioUsuario.guardar(seba);
+        repositorio.guardar(seba);
 
          // comprobacion
         assertThat(session().get(Usuario.class, seba.getId())).isNotNull();
@@ -43,7 +43,7 @@ public class UsuarioDaoTest extends SpringTest {
         session().save(seba);
 
         // ejecucion
-        Usuario buscado = repositorioUsuario.buscarPor(seba.getEmail());
+        Usuario buscado = repositorio.buscarPor(seba.getEmail());
 
         // comprobacion
         assertThat(buscado).isNotNull();

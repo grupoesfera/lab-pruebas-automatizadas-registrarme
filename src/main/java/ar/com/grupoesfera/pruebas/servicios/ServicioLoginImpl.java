@@ -34,6 +34,7 @@ public class ServicioLoginImpl implements ServicioLogin {
 		servicioMail.enviarMailDeBienvenida(usuario);
 	}
 
+	// IoC setters
 	public void setRepositorioUsuario(RepositorioUsuario repositorioUsuario) {
 		this.repositorioUsuario = repositorioUsuario;
 	}

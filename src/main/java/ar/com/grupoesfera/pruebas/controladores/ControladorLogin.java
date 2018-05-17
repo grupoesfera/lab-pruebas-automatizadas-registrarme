@@ -80,6 +80,7 @@ public class ControladorLogin {
 		return new ModelAndView("redirect:/login");
 	}
 
+	// IoC setters
 	public void setServicioLogin(ServicioLogin servicioLogin) {
 		this.servicioLogin = servicioLogin;
 	}

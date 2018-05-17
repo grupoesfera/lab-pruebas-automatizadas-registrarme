@@ -4,6 +4,7 @@ import ar.com.grupoesfera.pruebas.modelo.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
@@ -17,18 +18,18 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	public Usuario consultarUsuario(Usuario usuario) {
 
 		final Session session = sessionFactory.getCurrentSession();
-		return (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.eq("email", usuario.getEmail()))
-				.add(Restrictions.eq("password", usuario.getPassword()))
-				.uniqueResult();
+		final Query query = session.createQuery("from Usuario where email=:email and password=:password");
+		query.setParameter("email", usuario.getEmail());
+		query.setParameter("password", usuario.getPassword());
+		return (Usuario) query.uniqueResult();
 	}
 
 	@Override
 	public Usuario buscarPor(String email) {
 		final Session session = sessionFactory.getCurrentSession();
-		return (Usuario) session.createCriteria(Usuario.class)
-								.add(Restrictions.eq("email", email))
-								.uniqueResult();
+		final Query query = session.createQuery("from Usuario where email=:email");
+		query.setParameter("email", email);
+		return (Usuario) query.uniqueResult();
 	}
 
 	@Override
