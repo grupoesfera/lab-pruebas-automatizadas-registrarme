@@ -80,7 +80,6 @@ public class ControladorLogin {
 		return new ModelAndView("redirect:/login");
 	}
 
-
 	public void setServicioLogin(ServicioLogin servicioLogin) {
 		this.servicioLogin = servicioLogin;
 	}
