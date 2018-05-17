@@ -3,13 +3,12 @@ package ar.com.grupoesfera.pruebas.repositorios;
 import ar.com.grupoesfera.pruebas.modelo.Usuario;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.inject.Inject;
 
-@Repository("usuarioDao")
+@Repository("usuarioRepository")
 public class RepositorioUsuarioImpl implements RepositorioUsuario {
 
 	@Inject
