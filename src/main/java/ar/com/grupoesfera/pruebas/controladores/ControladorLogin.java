@@ -1,9 +1,7 @@
 package ar.com.grupoesfera.pruebas.controladores;
 
 import ar.com.grupoesfera.pruebas.modelo.Usuario;
-import ar.com.grupoesfera.pruebas.modelo.UsuarioExistente;
-import ar.com.grupoesfera.pruebas.servicios.ServicioLogin;
-import org.apache.commons.validator.routines.EmailValidator;
+import ar.com.grupoesfera.pruebas.servicios.ServicioUsuario;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 public class ControladorLogin {
 
 	@Inject
-	private ServicioLogin servicioLogin;
+	private ServicioUsuario servicioLogin;
 
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
@@ -55,7 +53,7 @@ public class ControladorLogin {
 	}
 
 	// IoC setters
-	public void setServicioLogin(ServicioLogin servicioLogin) {
+	public void setServicioLogin(ServicioUsuario servicioLogin) {
 		this.servicioLogin = servicioLogin;
 	}
 }

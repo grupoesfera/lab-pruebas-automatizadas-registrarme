@@ -1,7 +1,7 @@
 package ar.com.grupoesfera.pruebas.controladores;
 
 import ar.com.grupoesfera.pruebas.modelo.Usuario;
-import ar.com.grupoesfera.pruebas.servicios.ServicioLogin;
+import ar.com.grupoesfera.pruebas.servicios.ServicioUsuario;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,7 +18,7 @@ public class ControladorLoginTest {
 	private Usuario usuarioMock;
 	private HttpServletRequest requestMock;
 	private HttpSession sessionMock;
-	private ServicioLogin servicioLoginMock;
+	private ServicioUsuario servicioMock;
 	
 	@Before
 	public void init(){
@@ -26,14 +26,14 @@ public class ControladorLoginTest {
 		when(usuarioMock.getEmail()).thenReturn("user@user.com");
 		requestMock = mock(HttpServletRequest.class);
 		sessionMock = mock(HttpSession.class);
-		servicioLoginMock = mock(ServicioLogin.class);
-		controlador.setServicioLogin(servicioLoginMock);
+		servicioMock = mock(ServicioUsuario.class);
+		controlador.setServicioLogin(servicioMock);
 	}
 
 	@Test
 	public void loginConUsuarioYPasswordInorrectosDeberiaLlevarALoginNuevamente(){
 		// preparacion
-		when(servicioLoginMock.consultarUsuario(any(Usuario.class))).thenReturn(null);
+		when(servicioMock.consultarUsuario(any(Usuario.class))).thenReturn(null);
 
 		// ejecucion
 		ModelAndView modelAndView = controlador.validarLogin(usuarioMock, requestMock);
@@ -41,7 +41,7 @@ public class ControladorLoginTest {
 		// validacion
 		assertThat(modelAndView.getViewName()).isEqualTo("login");
 		assertThat(modelAndView.getModel().get("error")).isEqualTo("Usuario o clave incorrecta");
-		verify(sessionMock, times(0)).setAttribute("ROL", "ADMIN");
+		verify(sessionMock, never()).setAttribute("ROL", "ADMIN");
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ public class ControladorLoginTest {
 		when(usuarioEncontradoMock.getRol()).thenReturn("ADMIN");
 
 		when(requestMock.getSession()).thenReturn(sessionMock);
-		when(servicioLoginMock.consultarUsuario(any(Usuario.class))).thenReturn(usuarioEncontradoMock);
+		when(servicioMock.consultarUsuario(any(Usuario.class))).thenReturn(usuarioEncontradoMock);
 		
 		// ejecucion
 		ModelAndView modelAndView = controlador.validarLogin(usuarioMock, requestMock);

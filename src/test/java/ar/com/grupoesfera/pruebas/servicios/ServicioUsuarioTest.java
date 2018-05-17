@@ -9,33 +9,33 @@ import org.junit.Test;
 
 import static org.mockito.Mockito.*;
 
-public class ServicioLoginTest {
+public class ServicioUsuarioTest {
 
-    private ServicioLoginImpl servicioLogin;
+    private ServicioUsuarioImpl servicio;
     private Usuario usuarioMock;
-    private RepositorioUsuario repositorioUsuarioMock;
+    private RepositorioUsuario repositorioMock;
     private ServicioMail servicioMailMock;
 
     @Before
     public void init(){
-        servicioLogin = new ServicioLoginImpl();
+        servicio = new ServicioUsuarioImpl();
         usuarioMock = mock(Usuario.class);
 
-        repositorioUsuarioMock = mock(RepositorioUsuario.class);
-        servicioLogin.setRepositorioUsuario(repositorioUsuarioMock);
+        repositorioMock = mock(RepositorioUsuario.class);
+        servicio.setRepositorioUsuario(repositorioMock);
 
         servicioMailMock = mock(ServicioMail.class);
-        servicioLogin.setServicioMail(servicioMailMock);
+        servicio.setServicioMail(servicioMailMock);
     }
 
     @Test(expected = UsuarioExistente.class)
     public void registrarmeDeberiaLanzarUsuarioExisteSiExisteUnUsuarioConMismoMail() throws UsuarioExistente {
 
         // preparacion
-        when(repositorioUsuarioMock.buscarPor(usuarioMock.getEmail())).thenReturn(new Usuario());
+        when(repositorioMock.buscarPor(usuarioMock.getEmail())).thenReturn(new Usuario());
 
         // ejecucion
-        servicioLogin.registrar(usuarioMock);
+        servicio.registrar(usuarioMock);
 
         // validacion
         verify(servicioMailMock, never()).enviarMailDeBienvenida(usuarioMock);
@@ -45,11 +45,11 @@ public class ServicioLoginTest {
     public void registrarmeDeberiaLanzarExceptionSiOcurreUnErrorAlGuardarElUsuarioNuevo() throws UsuarioExistente {
 
         // preparacion
-        when(repositorioUsuarioMock.buscarPor(usuarioMock.getEmail())).thenReturn(null);
-        doThrow(HibernateException.class).when(repositorioUsuarioMock).guardar(usuarioMock);
+        when(repositorioMock.buscarPor(usuarioMock.getEmail())).thenReturn(null);
+        doThrow(HibernateException.class).when(repositorioMock).guardar(usuarioMock);
 
         // ejecucion
-        servicioLogin.registrar(usuarioMock);
+        servicio.registrar(usuarioMock);
 
         // validacion
         verify(servicioMailMock, never()).enviarMailDeBienvenida(usuarioMock);
@@ -59,10 +59,10 @@ public class ServicioLoginTest {
     public void registrarmeDeberiaGuardarElNuevoUsuarioSiElUsuarioNoExiste() throws UsuarioExistente {
 
         // preparacion
-        when(repositorioUsuarioMock.buscarPor(usuarioMock.getEmail())).thenReturn(null);
+        when(repositorioMock.buscarPor(usuarioMock.getEmail())).thenReturn(null);
 
         // ejecucion
-        servicioLogin.registrar(usuarioMock);
+        servicio.registrar(usuarioMock);
 
         // validacion
         verify(servicioMailMock, times(1)).enviarMailDeBienvenida(usuarioMock);

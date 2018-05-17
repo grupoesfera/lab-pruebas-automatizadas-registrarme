@@ -2,34 +2,26 @@ package ar.com.grupoesfera.pruebas.controladores;
 
 import ar.com.grupoesfera.pruebas.modelo.Usuario;
 import ar.com.grupoesfera.pruebas.modelo.UsuarioExistente;
-import ar.com.grupoesfera.pruebas.servicios.ServicioLogin;
+import ar.com.grupoesfera.pruebas.servicios.ServicioUsuario;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.doThrow;
 
 public class ControladorRegistrarmeTest {
 
     private ControladorRegistrarme controlador = new ControladorRegistrarme();
     private Usuario usuarioMock;
-    private HttpServletRequest requestMock;
-    private HttpSession sessionMock;
-    private ServicioLogin servicioLoginMock;
+    private ServicioUsuario servicioMock;
 
     @Before
     public void init(){
         usuarioMock = mock(Usuario.class);
         when(usuarioMock.getEmail()).thenReturn("mail@usuario.com");
-        requestMock = mock(HttpServletRequest.class);
-        sessionMock = mock(HttpSession.class);
-        servicioLoginMock = mock(ServicioLogin.class);
-        controlador.setServicioLogin(servicioLoginMock);
+        servicioMock = mock(ServicioUsuario.class);
+        controlador.setServicioLogin(servicioMock);
     }
 
     @Test
@@ -40,13 +32,13 @@ public class ControladorRegistrarmeTest {
 
         // validacion
         assertThat(modelAndView.getViewName()).isEqualTo("redirect:/login");
-        verify(servicioLoginMock, times(1)).registrar(usuarioMock);
+        verify(servicioMock, times(1)).registrar(usuarioMock);
     }
 
     @Test
     public void registrarmeSiUsuarioExisteDeberiaVolverAFormularioYMostrarError() throws UsuarioExistente {
         // preparacion
-        doThrow(UsuarioExistente.class).when(servicioLoginMock).registrar(usuarioMock);
+        doThrow(UsuarioExistente.class).when(servicioMock).registrar(usuarioMock);
 
         // ejecucion
         ModelAndView modelAndView = controlador.registrarme(usuarioMock);
@@ -59,7 +51,7 @@ public class ControladorRegistrarmeTest {
     @Test
     public void errorEnRegistrarmeDeberiaVolverAFormularioYMostrarError() throws UsuarioExistente {
         // preparacion
-        doThrow(Exception.class).when(servicioLoginMock).registrar(usuarioMock);
+        doThrow(Exception.class).when(servicioMock).registrar(usuarioMock);
 
         // ejecucion
         ModelAndView modelAndView = controlador.registrarme(usuarioMock);
