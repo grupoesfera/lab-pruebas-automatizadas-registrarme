@@ -1,0 +1,15 @@
+Un Tragamonedas está compuesto por 3 Tambores. Cuando el Tragamonedas se activa, giran los
+3 Tambores. Cada Tambor se detiene en una posición aleatoria comprendida entre 1 y 8. 
+
+Tambor: 
+		void girar()
+		int obtenerPosicion()
+ayuda: Random r = new random(); r.nextInt();
+
+
+El Tragamonedas entrega un premio cada vez que, luego de ser activado, los 3 Tambores se detienen
+en la misma posición.!
+
+Tragamonedas:
+		void activar()
+		boolean entregaPremio()
