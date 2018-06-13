@@ -21,7 +21,7 @@ public class ControladorRegistrarmeTest {
         usuarioMock = mock(Usuario.class);
         when(usuarioMock.getEmail()).thenReturn("mail@usuario.com");
         servicioMock = mock(ServicioUsuario.class);
-        controlador.setServicioLogin(servicioMock);
+        controlador.setServicio(servicioMock);
     }
 
     @Test

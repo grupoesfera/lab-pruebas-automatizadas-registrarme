@@ -17,7 +17,7 @@ import javax.inject.Inject;
 public class ControladorRegistrarme {
 
     @Inject
-    private ServicioUsuario servicioLogin;
+    private ServicioUsuario servicio;
 
     @RequestMapping(path = "/nuevo-usuario", method = RequestMethod.GET)
     public ModelAndView nuevoUsuario() {
@@ -34,7 +34,7 @@ public class ControladorRegistrarme {
             return new ModelAndView("nuevo-usuario", model);
         }
         try{
-            servicioLogin.registrar(usuario);
+            servicio.registrar(usuario);
         } catch (UsuarioExistente e){
             model.put("error", "El usuario ya existe");
             return new ModelAndView("nuevo-usuario", model);
@@ -46,7 +46,7 @@ public class ControladorRegistrarme {
     }
 
     // IoC setters
-    public void setServicioLogin(ServicioUsuario servicioLogin) {
-        this.servicioLogin = servicioLogin;
+    public void setServicio(ServicioUsuario servicio) {
+        this.servicio = servicio;
     }
 }
