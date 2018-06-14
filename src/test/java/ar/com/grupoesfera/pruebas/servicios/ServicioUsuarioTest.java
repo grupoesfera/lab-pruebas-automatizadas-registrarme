@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 public class ServicioUsuarioTest {
 
@@ -56,7 +57,7 @@ public class ServicioUsuarioTest {
     }
 
     @Test
-    public void registrarmeDeberiaGuardarElNuevoUsuarioSiElUsuarioNoExiste() throws UsuarioExistente {
+    public void registrarmeDeberiaGuardarYEnviarMailDeBienvenidaSiElUsuarioNoExiste() throws UsuarioExistente {
 
         // preparacion
         when(repositorioMock.buscarPor(usuarioMock.getEmail())).thenReturn(null);
@@ -65,6 +66,7 @@ public class ServicioUsuarioTest {
         servicio.registrar(usuarioMock);
 
         // validacion
+        verify(repositorioMock, times(1)).guardar(usuarioMock);
         verify(servicioMailMock, times(1)).enviarMailDeBienvenida(usuarioMock);
     }
 }
