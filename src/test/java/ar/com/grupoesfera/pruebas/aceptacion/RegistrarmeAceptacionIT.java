@@ -44,5 +44,21 @@ public class RegistrarmeAceptacionIT extends TestDeAceptacion {
         assertThat(seleniumDriver.getCurrentUrl()).contains("registrarme");
     }
 
+    @Test
+    public void siElFormatoDeUsuarioEsIncorrectoDeveriaVolverALaVistaDeRegistro(){
+        // preparacion
+        String url = urlBase + "/nuevo-usuario";
+
+        // ejecucion
+        seleniumDriver.get(url);
+        seleniumDriver.findElement(By.id("email")).sendKeys("seba.com");
+        seleniumDriver.findElement(By.id("password")).sendKeys("1234");
+        seleniumDriver.findElement(By.id("btn-registrarme")).click();
+
+        // validacion
+        assertThat(seleniumDriver.getPageSource()).contains("El formato del usuario no es una direccion de email válida");
+        assertThat(seleniumDriver.getCurrentUrl()).contains("registrarme");
+    }
+
 }
 
