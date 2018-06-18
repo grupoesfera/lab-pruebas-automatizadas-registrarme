@@ -14,37 +14,14 @@ public class RegistrarmeStepDef extends TestDeAceptacion {
 
     @Given("que ingreso el usuario (.*) con clave (.*)")
     public void ingresoUsuario(String usuario, String clave){
-        seleniumDriver.get(url);
-        seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
-        seleniumDriver.findElement(By.id("password")).sendKeys(clave);
-    }
-
-    @Given("que ya existe el usuario (.*) con clave (.*)")
-    public void ingresoUsuarioDuplicado(String usuario, String clave){
-        seleniumDriver.get(url);
-        seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
-        seleniumDriver.findElement(By.id("password")).sendKeys(clave);
-        seleniumDriver.findElement(By.id("btn-registrarme")).click();
-
-        seleniumDriver.get(url);
-        seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
-        seleniumDriver.findElement(By.id("password")).sendKeys(clave);
     }
 
     @When("intento registrarme")
     public void registrarme(){
-        seleniumDriver.findElement(By.id("btn-registrarme")).click();
     }
 
     @Then("el usuario se crea y me redirige a la vista (.*)")
     public void redirigeA(String vista){
-        assertThat(seleniumDriver.getCurrentUrl()).contains(vista);
-    }
-
-    @Then("el usuario NO se crea y me redirige a la vista (.*) y muestra el mensaje '(.*)'")
-    public void vuelveARegistro(String vista, String mensaje){
-        assertThat(seleniumDriver.getPageSource()).contains(mensaje);
-        assertThat(seleniumDriver.getCurrentUrl()).contains(vista);
     }
 
 }
