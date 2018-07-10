@@ -39,12 +39,14 @@ public class RegistrarmeStepDef extends TestDeAceptacion {
     @Then("el usuario se crea y me redirige a la vista (.*)")
     public void redirigeA(String vista){
         assertThat(seleniumDriver.getCurrentUrl()).contains(vista);
+        seleniumDriver.quit();
     }
 
     @Then("el usuario NO se crea y me redirige a la vista (.*) y muestra el mensaje '(.*)'")
     public void vuelveARegistro(String vista, String mensaje){
         assertThat(seleniumDriver.getPageSource()).contains(mensaje);
         assertThat(seleniumDriver.getCurrentUrl()).contains(vista);
+        seleniumDriver.quit();
     }
 
 }

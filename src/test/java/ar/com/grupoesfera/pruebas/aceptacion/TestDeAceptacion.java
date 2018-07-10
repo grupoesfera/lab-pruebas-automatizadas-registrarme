@@ -1,6 +1,8 @@
 package ar.com.grupoesfera.pruebas.aceptacion;
 
+import org.junit.After;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -12,10 +14,27 @@ public abstract class TestDeAceptacion {
     protected WebDriver seleniumDriver;
 
     public TestDeAceptacion() {
-        seleniumDriver = new PhantomJSDriver();
+
+//        usarChrome();
+        usarPhantomJS();
+
         seleniumDriver.manage().window().maximize();
         seleniumDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         seleniumDriver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
+    }
+
+    @After
+    public void tearDown(){
+        seleniumDriver.quit();
+    }
+
+    private void usarPhantomJS(){
+        seleniumDriver = new PhantomJSDriver();
+    }
+
+    private void usarChrome(){
+        System.setProperty("webdriver.chrome.driver", "/usr/bin/selenium-drivers/chromedriver");
+        seleniumDriver = new ChromeDriver();
     }
 
 }
