@@ -13,7 +13,7 @@
 			    	<h3 class="form-signin-heading">Bienvenido</h3>
 					<hr class="colorgraph"><br>
 
-					<form:input path="email" id="email" type="email" class="form-control" />
+					<form:input path="email" id="email" class="form-control" />
 					<form:input path="password" type="password" id="password" class="form-control"/>     		  
 					
 					<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Login</button>
