@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RegistrarmeStepDef extends TestDeAceptacion {
+public class RegistrarmeCucumber extends TestDeAceptacion {
 
     private String url = urlBase + "/nuevo-usuario";
 

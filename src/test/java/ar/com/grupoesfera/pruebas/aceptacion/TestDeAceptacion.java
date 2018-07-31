@@ -26,9 +26,11 @@ public abstract class TestDeAceptacion {
     @After
     public void tearDown(){
         seleniumDriver.quit();
+//        seleniumDriver.close();
     }
 
     private void usarPhantomJS(){
+    	//System.setProperty("phantomjs.binary.path", "RUTA");
         seleniumDriver = new PhantomJSDriver();
     }
 
