@@ -25,8 +25,8 @@ public abstract class TestDeAceptacion {
 
     @After
     public void tearDown(){
-        seleniumDriver.quit();
-//        seleniumDriver.close();
+//        seleniumDriver.quit();
+        seleniumDriver.close();
     }
 
     private void usarPhantomJS(){
