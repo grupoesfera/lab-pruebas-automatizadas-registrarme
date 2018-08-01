@@ -25,7 +25,6 @@ public abstract class TestDeAceptacion {
 
     @After
     public void tearDown(){
-//        seleniumDriver.quit();
         seleniumDriver.close();
     }
 

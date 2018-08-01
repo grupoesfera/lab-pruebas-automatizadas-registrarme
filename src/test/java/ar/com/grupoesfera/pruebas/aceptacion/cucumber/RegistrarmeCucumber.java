@@ -22,7 +22,6 @@ public class RegistrarmeCucumber extends TestDeAceptacion {
         seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
         seleniumDriver.findElement(By.id("password")).sendKeys(clave);
         seleniumDriver.findElement(By.id("btn-registrarme")).click();
-
     }
 
     @When("ingreso a (.*)")
