@@ -9,57 +9,56 @@ import org.openqa.selenium.By;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RegistrarmeCucumber extends TestDeAceptacion {
+public class RegistrarmeCucumber extends TestDeAceptacion implements AdaptadorParaRegistrarme {
+
+    private final AdaptadorParaRegistrarme adaptador;
+
+    public RegistrarmeCucumber(AdaptadorParaRegistrarme adaptador ){
+        this.adaptador = adaptador;
+    }
 
     @Given("que no existe el usuario (.*)")
     public void noExiteUsuario(String usuario){
-        // no hace nada
+        adaptador.noExiteUsuario(usuario);
     }
 
     @Given("que ya existe el usuario (.*) con clave (.*)")
     public void ingresoUsuarioDuplicado(String usuario, String clave){
-        seleniumDriver.get(urlBase + "/nuevo-usuario");
-        seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
-        seleniumDriver.findElement(By.id("password")).sendKeys(clave);
-        seleniumDriver.findElement(By.id("btn-registrarme")).click();
+        adaptador.ingresoUsuarioDuplicado(usuario,clave);
     }
 
     @When("ingreso a (.*)")
-    public void ingresoA(String path){
-        seleniumDriver.get(urlBase + "/" + path);
-    }
+    public void ingresoA(String path){  adaptador.ingresoA(path);    }
 
     @When("intento registrarme")
     public void registrarme(){
-        seleniumDriver.findElement(By.id("btn-registrarme")).click();
+        adaptador.registrarme();
     }
 
     @And("ingreso el usuario (.*)")
     public void ingresoUsuario(String usuario){
-        seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
+        adaptador.ingresoUsuario(usuario);
     }
 
     @And("ingreso la clave (.*)")
     public void ingresoClave(String clave){
-        seleniumDriver.findElement(By.id("password")).sendKeys(clave);
+        adaptador.ingresoClave(clave);
     }
 
     @Then("el usuario se crea")
-    public void usuarioSeCrea(){
-    }
+    public void usuarioSeCrea(){ adaptador.usuarioSeCrea();     }
 
     @Then("el usuario NO se crea")
-    public void usuarioNoSeCrea(){
-    }
+    public void usuarioNoSeCrea(){ adaptador.usuarioNoSeCrea();     }
 
     @And("muestra el mensaje '(.*)'")
     public void vuelveARegistro(String mensaje){
-        assertThat(seleniumDriver.getPageSource()).contains(mensaje);
+        adaptador.vuelveARegistro(mensaje);
     }
 
     @And("me redirige a la vista (.*)")
     public void redirigeA(String vista){
-        assertThat(seleniumDriver.getCurrentUrl()).contains(vista);
+        adaptador.redirigeA(vista);
     }
 
 }
