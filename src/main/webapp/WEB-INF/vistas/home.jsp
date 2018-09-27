@@ -3,6 +3,7 @@
 	<head>
 	    <link href="css/bootstrap.min.css" rel="stylesheet" >
 	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	    <title>home</title>
 	</head>
 	<body>
 		<div class = "container">

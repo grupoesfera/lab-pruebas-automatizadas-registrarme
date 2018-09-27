@@ -26,16 +26,14 @@ public class AdaptadorParaRegistrarmeWeb extends TestDeAceptacion implements Ada
         seleniumDriver.get(urlBase + "/" + path);
     }
 
-    public void registrarme(){
-        seleniumDriver.findElement(By.id("btn-registrarme")).click();
-    }
-
     public void ingresoUsuario(String usuario){
         seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
     }
-
     public void ingresoClave(String clave){
         seleniumDriver.findElement(By.id("password")).sendKeys(clave);
+    }
+    public void registrarme(){
+        seleniumDriver.findElement(By.id("btn-registrarme")).click();
     }
 
     public void usuarioSeCrea(){}
@@ -47,6 +45,6 @@ public class AdaptadorParaRegistrarmeWeb extends TestDeAceptacion implements Ada
     }
 
     public void redirigeA(String vista){
-        assertThat(seleniumDriver.getCurrentUrl()).contains(vista);
+        assertThat(seleniumDriver.getTitle()).isEqualToIgnoringCase(vista);
     }
 }

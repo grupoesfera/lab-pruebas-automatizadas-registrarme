@@ -1,15 +1,18 @@
 package ar.com.grupoesfera.pruebas.aceptacion.cucumber;
 
 import ar.com.grupoesfera.pruebas.aceptacion.TestDeAceptacion;
+import ar.com.grupoesfera.pruebas.modelo.UsuarioExistente;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RegistrarmeCucumber extends TestDeAceptacion implements AdaptadorParaRegistrarme {
+public class RegistrarmeCucumber implements AdaptadorParaRegistrarme {
 
     private final AdaptadorParaRegistrarme adaptador;
 
