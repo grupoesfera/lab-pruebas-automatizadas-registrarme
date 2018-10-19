@@ -1,12 +1,10 @@
-Implementar la clase Cerradura con los siguientes métodos
-public class Cerradura {
-	public Cerradura(int claveDeApertura, int cantidadDeFallosConsecutivosQueLaBloquean)
-	public boolean abrir(int clave)
-	public boolean estaAbierta()
-	public boolean fueBloqueada()
-	public int contarAperturasExitosas()
-	public int contarAperturasFallidas()
-	public boolean estaCerrada()
-	public void cerrar()
-}
+Implementar una Cerradura con las siguientes funcionalidades
+
+    abrir (en caso que se ingrese la clave correcta)
+    conocer si está abierta
+    saber si fue bloqueada (luego de N intentos fallidso consecutivos)
+    conocer la cantidad total de aperturas exitosas
+    conocer la cantidad total de aperturas fallidas
+    saber si está cerrada
+    cerrarla
 
