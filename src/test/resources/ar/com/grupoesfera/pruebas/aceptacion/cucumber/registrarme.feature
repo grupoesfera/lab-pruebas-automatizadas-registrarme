@@ -30,3 +30,7 @@ Feature: Registrarme y darme de alta en el sitio
     Then el usuario NO se crea
       And me redirige a la vista registrarme
       And muestra el mensaje 'El formato del usuario no es una direccion de email válida'
+
+
+# ejercicio: agregar el escenario que valida formato de la clave a partir que existe un bug, que primero codeen
+# la prueba y de rojo, luego agreguen el comportamiento y deberia pasar la prueba
