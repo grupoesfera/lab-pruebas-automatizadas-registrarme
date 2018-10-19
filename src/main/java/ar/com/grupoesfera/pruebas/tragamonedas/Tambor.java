@@ -11,8 +11,8 @@ public class Tambor {
 	}
 	
 	public void girar() {
-		Random ramdom = new Random();
-		valor = ramdom.nextInt(8) + 1;
+		Random random = new Random();
+		valor = random.nextInt(8) + 1;
 	}
 
 }
