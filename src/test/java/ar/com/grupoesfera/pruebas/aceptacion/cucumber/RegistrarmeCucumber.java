@@ -1,6 +1,7 @@
 package ar.com.grupoesfera.pruebas.aceptacion.cucumber;
 
 import ar.com.grupoesfera.pruebas.aceptacion.TestDeAceptacion;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -62,4 +63,8 @@ public class RegistrarmeCucumber extends TestDeAceptacion {
         assertThat(seleniumDriver.getCurrentUrl()).contains(vista);
     }
 
+    @After
+    public void fin(){
+        seleniumDriver.quit();
+    }
 }
