@@ -37,7 +37,7 @@ public abstract class TestDeAceptacion {
     private void usarChrome(){
         System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver-linux");
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("headless");
+        options.addArguments("headless");
         seleniumDriver = new ChromeDriver(options);
     }
 
