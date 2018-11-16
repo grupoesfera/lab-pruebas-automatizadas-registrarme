@@ -16,8 +16,8 @@ public abstract class TestDeAceptacion {
 
     public TestDeAceptacion() {
 
-//        usarChrome();
-        usarPhantomJS();
+        usarChrome();
+//        usarPhantomJS();
 
         seleniumDriver.manage().window().maximize();
         seleniumDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
