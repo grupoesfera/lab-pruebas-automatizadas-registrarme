@@ -2,10 +2,10 @@ package ar.com.grupoesfera.pruebas.aceptacion.cucumber;
 
 
 import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
+import net.serenitybdd.cucumber.CucumberWithSerenity;
 import org.junit.runner.RunWith;
 
-@RunWith(Cucumber.class)
+@RunWith(CucumberWithSerenity.class)
 @CucumberOptions(plugin = {"pretty", "html:target/cucumber"})
 public class RunTestAceptacionCucumberIT {
 

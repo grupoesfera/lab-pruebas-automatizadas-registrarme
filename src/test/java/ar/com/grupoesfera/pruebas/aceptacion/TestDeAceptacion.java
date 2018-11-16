@@ -1,5 +1,6 @@
 package ar.com.grupoesfera.pruebas.aceptacion;
 
+import net.thucydides.core.pages.PageObject;
 import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,8 +16,8 @@ public abstract class TestDeAceptacion {
 
     public TestDeAceptacion() {
 
-//        usarChrome();
-        usarPhantomJS();
+        usarChrome();
+//        usarPhantomJS();
 
         seleniumDriver.manage().window().maximize();
         seleniumDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -34,7 +35,7 @@ public abstract class TestDeAceptacion {
     }
 
     private void usarChrome(){
-        System.setProperty("webdriver.chrome.driver", "/usr/bin/selenium-drivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver-linux");
         seleniumDriver = new ChromeDriver();
     }
 
