@@ -6,12 +6,19 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import net.serenitybdd.core.Serenity;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RegistrarmeCucumber extends TestDeAceptacion {
+public class RegistrarmeCucumber extends PageObject {
+
+    @Managed
+    private WebDriver seleniumDriver;
+    protected String port = System.getProperty("servlet.port", "8080");
+    protected String urlBase = "http://localhost:" + port + "/sitio";
 
     @Given("que no existe el usuario (.*)")
     public void noExiteUsuario(String usuario){

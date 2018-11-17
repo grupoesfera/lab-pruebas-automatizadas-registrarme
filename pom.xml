@@ -67,6 +67,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<argLine>-Xmx512m</argLine>
+					<systemPropertyVariables>
+						<properties>${project.build.directory}/serenity.properties</properties>
+						<webdriver.driver>chrome</webdriver.driver>
+						<webdriver.chrome.driver>webdrivers/chromedriver-linux</webdriver.chrome.driver>
+					</systemPropertyVariables>
+				</configuration>
 				<executions>
 					<execution>
 						<id>perform-it</id>

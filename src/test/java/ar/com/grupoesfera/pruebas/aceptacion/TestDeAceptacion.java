@@ -1,5 +1,7 @@
 package ar.com.grupoesfera.pruebas.aceptacion;
 
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.pages.PageObject;
 import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -7,11 +9,12 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
-public abstract class TestDeAceptacion {
+public abstract class TestDeAceptacion  {
 
+    @Managed
+    protected WebDriver seleniumDriver;
     protected String port = System.getProperty("servlet.port", "8080");
     protected String urlBase = "http://localhost:" + port + "/sitio";
-    protected WebDriver seleniumDriver;
 
     public TestDeAceptacion() {
 
