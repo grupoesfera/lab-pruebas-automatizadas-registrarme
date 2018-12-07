@@ -20,7 +20,7 @@ public abstract class TestDeAceptacion  {
 
         System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver-linux");
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("headless");
+        options.addArguments("headless");
         seleniumDriver = new ChromeDriver(options);
         seleniumDriver.manage().window().maximize();
         seleniumDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
