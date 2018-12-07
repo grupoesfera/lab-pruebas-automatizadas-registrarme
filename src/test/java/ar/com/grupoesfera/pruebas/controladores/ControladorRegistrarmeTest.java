@@ -44,7 +44,7 @@ public class ControladorRegistrarmeTest {
         ModelAndView modelAndView = controlador.registrarme(usuarioMock);
 
         // validacion
-        assertThat(modelAndView.getViewName()).isEqualTo("nuevo-usuariokakakakakakla");
+        assertThat(modelAndView.getViewName()).isEqualTo("nuevo-usuario");
         assertThat(modelAndView.getModel().get("error")).isEqualTo("El usuario ya existe");
     }
 
