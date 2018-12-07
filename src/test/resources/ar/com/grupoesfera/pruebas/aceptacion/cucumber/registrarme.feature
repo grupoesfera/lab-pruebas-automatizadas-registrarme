@@ -9,10 +9,11 @@ Feature: Registrarme y darme de alta en el sitio
       And ingreso la clave 1234
       And intento registrarme
     Then el usuario se crea
+      And me redirige a la vista login
 
 
   Scenario: Si el usuario ya existe en el sitio, el mismo NO se da de alta y vuelve a la vista de registro
-    And me redirige a la vista login   Given que ya existe el usuario pedro@pedro.com con clave 1234
+    Given que ya existe el usuario pedro@pedro.com con clave 1234
     When ingreso a nuevo-usuario
       And ingreso el usuario pedro@pedro.com
       And ingreso la clave 1234
