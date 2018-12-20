@@ -18,9 +18,9 @@ Feature: Registrarme y darme de alta en el sitio
       And ingreso el usuario pedro@pedro.com
       And ingreso la clave 1234
       And intento registrarme
-    Then el usuario NO se crea
-      And me redirige a la vista registrarme
+    Then me redirige a la vista registrarme
       And muestra el mensaje 'El usuario ya existe'
+      And el usuario pedro@pedro.com con clave 1234 no se crea
 
   Scenario: Si el formato de usuario es incorrecto NO se da de alta y vuelve a la vista de registro
     Given
@@ -28,9 +28,9 @@ Feature: Registrarme y darme de alta en el sitio
       And ingreso el usuario pedro.com
       And ingreso la clave 1234
       And intento registrarme
-    Then el usuario NO se crea
-      And me redirige a la vista registrarme
+    Then me redirige a la vista registrarme
       And muestra el mensaje 'El formato del usuario no es una direccion de email válida'
+      And el usuario pedro.com con clave 1234 no se crea
 
 
 # ejercicio: agregar el escenario que valida formato de la clave a partir que existe un bug, que primero codeen
