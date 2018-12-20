@@ -53,7 +53,7 @@ public class RegistrarmeCucumber extends TestDeAceptacionCucumber {
         assertThat(seleniumDriver.getPageSource()).contains("Bienvenidos!!");
     }
 
-    @And ("el usuario (.*) con clave (.*) no se crea")
+    @And ("no se crea el usuario (.*) con clave (.*)")
     public void usuarioNoSeCrea(String usuario, String clave) {
         seleniumDriver.get(urlBase + "/login");
         seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
