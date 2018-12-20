@@ -48,6 +48,15 @@ public class RegistrarmeCucumber extends TestDeAceptacionCucumber {
     public void usuarioSeCrea(){
     }
 
+    @And ("el usuario (.*) con clave (.*) se crea")
+    public void creacionDeUsuario(String usuario, String clave) {
+        seleniumDriver.get(urlBase + "/login");
+        seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
+        seleniumDriver.findElement(By.id("password")).sendKeys(clave);
+        seleniumDriver.findElement(By.id("btn-login")).click();
+        assertThat(seleniumDriver.getPageSource()).contains("Bienvenidos!!");
+    }
+
     @Then("el usuario NO se crea")
     public void usuarioNoSeCrea(){
     }
@@ -57,7 +66,7 @@ public class RegistrarmeCucumber extends TestDeAceptacionCucumber {
         assertThat(seleniumDriver.getPageSource()).contains(mensaje);
     }
 
-    @And("me redirige a la vista (.*)")
+    @Then("me redirige a la vista (.*)")
     public void redirigeA(String vista){
         assertThat(seleniumDriver.getCurrentUrl()).contains(vista);
     }

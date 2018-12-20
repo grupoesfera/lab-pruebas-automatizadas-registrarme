@@ -16,7 +16,7 @@
 					<form:input path="email" id="email" class="form-control" />
 					<form:input path="password" type="password" id="password" class="form-control"/>     		  
 					
-					<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Login</button>
+					<button id="btn-login" class="btn btn-lg btn-primary btn-block" Type="Submit"/>Login</button>
 				</form:form>
 				<a href="nuevo-usuario"	>Registrarme</a>
 
