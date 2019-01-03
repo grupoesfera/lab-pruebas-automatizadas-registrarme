@@ -16,15 +16,6 @@ public class ControladorApiLogin  {
     @Inject
     private ServicioUsuario servicioUsuario;
 
-    @RequestMapping(path="/do-login/{usuario}/{clave}", method = RequestMethod.GET)
-    public String doLogin(@PathVariable("usuario") String usuario, @PathVariable("clave") String clave){
-        Usuario usuarioBuscado = servicioUsuario.consultarUsuario(usuario(usuario, clave));
-        if(usuarioBuscado == null){
-            return "usuario o clave incorrecta";
-        }
-        return "login exitoso";
-    }
-
     @RequestMapping(path="/crear-usuario/{usuario}/{clave}", method = RequestMethod.GET)
     public String crearUsuario(@PathVariable("usuario") String usuario, @PathVariable("clave") String clave) throws UsuarioExistente {
         servicioUsuario.registrar(usuario(usuario, clave));

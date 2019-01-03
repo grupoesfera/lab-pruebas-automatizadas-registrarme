@@ -10,20 +10,5 @@ import static org.assertj.core.api.Assertions.*;
 
 public class LoginCucumber extends TestDeAceptacionCucumber {
 
-    private HttpResponse<String> httpResponse;
 
-    @Given ("existe el usuario (.*) con clave (.*)")
-    public void crearUsuario(String usuario, String clave) throws Exception{
-        get(urlBase + "/crear-usuario/" + usuario + "/" + clave).asString();
-    }
-
-    @When("intento loguearme con usuario (.*) y clave (.*)")
-    public void login(String usuario, String clave) throws Exception{
-        httpResponse = get(urlBase + "/do-login/" + usuario + "/" + clave).asString();
-    }
-
-    @Then("se retorna el mensaje '(.*)'")
-    public void obtenerMensaje(String mensaje){
-        assertThat(httpResponse.getBody()).contains(mensaje);
-    }
 }
