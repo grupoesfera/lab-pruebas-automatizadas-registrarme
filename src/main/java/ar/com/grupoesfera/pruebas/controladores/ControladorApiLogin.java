@@ -11,21 +11,17 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.inject.Inject;
 
 @RestController
-public class ControladorApiLogin  {
+public class ControladorApiLogin {
 
     @Inject
     private ServicioUsuario servicioUsuario;
 
-    @RequestMapping(path="/crear-usuario/{usuario}/{clave}", method = RequestMethod.GET)
+    @RequestMapping(path = "/crear-usuario/{usuario}/{clave}", method = RequestMethod.GET)
     public String crearUsuario(@PathVariable("usuario") String usuario, @PathVariable("clave") String clave) throws UsuarioExistente {
-        servicioUsuario.registrar(usuario(usuario, clave));
-        return "";
-    }
-
-    private Usuario usuario(String usuario, String clave){
         Usuario user = new Usuario();
         user.setEmail(usuario);
         user.setPassword(clave);
-        return user;
+        servicioUsuario.registrar(user);
+        return "";
     }
 }

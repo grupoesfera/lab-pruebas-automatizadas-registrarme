@@ -11,6 +11,4 @@ import static org.assertj.core.api.Assertions.*;
 
 public class LoginCucumber extends TestDeAceptacionCucumber {
 
-    private HttpResponse<String> httpResponse;
-
 }

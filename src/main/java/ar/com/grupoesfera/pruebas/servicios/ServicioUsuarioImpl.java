@@ -20,6 +20,14 @@ public class ServicioUsuarioImpl implements ServicioUsuario {
 	private ServicioMail servicioMail;
 
 	@Override
+	public Boolean existe(String usuario, String clave) {
+		Usuario user = new Usuario();
+		user.setEmail(usuario);
+		user.setPassword(clave);
+		return consultarUsuario(user) != null;
+	}
+
+	@Override
 	public Usuario consultarUsuario (Usuario usuario) {
 		return repositorioUsuario.consultarUsuario(usuario);
 	}
