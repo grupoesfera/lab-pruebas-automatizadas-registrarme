@@ -14,7 +14,7 @@ public abstract class TestDeAceptacion  {
     @Managed
     protected WebDriver seleniumDriver;
     protected String port = System.getProperty("servlet.port", "8080");
-    protected String urlBase = "http://localhost:" + port + "/sitio";
+    protected String urlBase = "http://localhost:" + port + "/registrarme";
 
     public TestDeAceptacion() {
 
