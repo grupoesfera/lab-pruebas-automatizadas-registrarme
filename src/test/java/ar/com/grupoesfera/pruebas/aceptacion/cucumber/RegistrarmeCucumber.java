@@ -17,12 +17,12 @@ public class RegistrarmeCucumber extends TestDeAceptacionCucumber {
     }
 
     @Given("que ya existe el usuario (.*) con clave (.*)")
-    public void ingresoUsuarioDuplicado(String usuario, String clave){
+    public void ingresoUsuarioDuplicado(String usuario, String clave) {
         seleniumDriver.get(urlBase + "/nuevo-usuario");
         seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
         seleniumDriver.findElement(By.id("password")).sendKeys(clave);
         seleniumDriver.findElement(By.id("btn-registrarme")).click();
-    }
+}
 
     @When("ingreso a (.*)")
     public void ingresoA(String path){
