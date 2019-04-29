@@ -5,7 +5,6 @@
 	<artifactId>registrarme</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-
 	<build>
 		<resources>
 			<resource>
@@ -121,7 +120,7 @@
 			<plugin>
 				<groupId>net.serenity-bdd.maven.plugins</groupId>
 				<artifactId>serenity-maven-plugin</artifactId>
-				<version>1.8.21</version>
+				<version>2.0.43</version>
 				<executions>
 					<execution>
 						<id>serenity-reports</id>
@@ -288,7 +287,7 @@
 		<dependency>
 			<groupId>net.serenity-bdd</groupId>
 			<artifactId>serenity-core</artifactId>
-			<version>1.8.21</version>
+			<version>2.0.43</version>
 			<scope>test</scope>
 			<exclusions>
 				<exclusion>
@@ -328,7 +327,7 @@
 		<dependency>
 			<groupId>net.serenity-bdd</groupId>
 			<artifactId>serenity-cucumber</artifactId>
-			<version>1.6.10</version>
+			<version>1.9.33</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
