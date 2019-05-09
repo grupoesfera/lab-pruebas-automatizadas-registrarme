@@ -67,7 +67,7 @@ public class ServicioUsuarioTest {
         servicio.registrar(usuarioMock);
 
         // validacion
-        verify(repositorioMock, times(1)).guardar(usuarioMock);
+        verify(repositorioMock, times(11)).guardar(usuarioMock);
         verify(servicioMailMock, times(1)).enviarMailDeBienvenida(usuarioMock);
     }
 }

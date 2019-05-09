@@ -5,3 +5,6 @@ jdk:
 sudo: required
 addons:
   chrome: stable
+notifications:
+  email:
+    - sebastianismael@gmail.com
