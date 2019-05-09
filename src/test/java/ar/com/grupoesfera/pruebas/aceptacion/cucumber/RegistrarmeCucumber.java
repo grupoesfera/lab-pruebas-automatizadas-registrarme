@@ -16,22 +16,9 @@ public class RegistrarmeCucumber extends TestDeAceptacionCucumber {
         // no hace nada
     }
 
-    @Given("que ya existe el usuario (.*) con clave (.*)")
-    public void ingresoUsuarioDuplicado(String usuario, String clave) {
-        seleniumDriver.get(urlBase + "/nuevo-usuario");
-        seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
-        seleniumDriver.findElement(By.id("password")).sendKeys(clave);
-        seleniumDriver.findElement(By.id("btn-registrarme")).click();
-}
-
     @When("ingreso a (.*)")
     public void ingresoA(String path){
         seleniumDriver.get(urlBase + "/" + path);
-    }
-
-    @When("intento registrarme")
-    public void registrarme(){
-        seleniumDriver.findElement(By.id("btn-registrarme")).click();
     }
 
     @And("ingreso el usuario (.*)")
@@ -44,6 +31,16 @@ public class RegistrarmeCucumber extends TestDeAceptacionCucumber {
         seleniumDriver.findElement(By.id("password")).sendKeys(clave);
     }
 
+    @When("intento registrarme")
+    public void registrarme(){
+        seleniumDriver.findElement(By.id("btn-registrarme")).click();
+    }
+
+    @Then("me redirige a la vista (.*)")
+    public void redirigeA(String vista){
+        assertThat(seleniumDriver.getCurrentUrl()).contains(vista);
+    }
+
     @And ("el usuario (.*) con clave (.*) se crea")
     public void creacionDeUsuario(String usuario, String clave) {
         seleniumDriver.get(urlBase + "/login");
@@ -51,25 +48,6 @@ public class RegistrarmeCucumber extends TestDeAceptacionCucumber {
         seleniumDriver.findElement(By.id("password")).sendKeys(clave);
         seleniumDriver.findElement(By.id("btn-login")).click();
         assertThat(seleniumDriver.getPageSource()).contains("Bienvenidos!!");
-    }
-
-    @And ("no se crea el usuario (.*) con clave (.*)")
-    public void usuarioNoSeCrea(String usuario, String clave) {
-        seleniumDriver.get(urlBase + "/login");
-        seleniumDriver.findElement(By.id("email")).sendKeys(usuario);
-        seleniumDriver.findElement(By.id("password")).sendKeys(clave);
-        seleniumDriver.findElement(By.id("btn-login")).click();
-        assertThat(seleniumDriver.getPageSource()).contains("Usuario o clave incorrecta");
-    }
-
-    @And("muestra el mensaje '(.*)'")
-    public void vuelveARegistro(String mensaje){
-        assertThat(seleniumDriver.getPageSource()).contains(mensaje);
-    }
-
-    @Then("me redirige a la vista (.*)")
-    public void redirigeA(String vista){
-        assertThat(seleniumDriver.getCurrentUrl()).contains(vista);
     }
 
     @After
