@@ -29,7 +29,8 @@ public class RepositorioUsuarioTest extends SpringTest {
         repositorio.guardar(seba);
 
          // comprobacion
-        assertThat(session().get(Usuario.class, seba.getId())).isNotNull();
+        Usuario buscado = session().get(Usuario.class, seba.getId());
+        assertThat(buscado).isNotNull();
     }
 
     @Test
