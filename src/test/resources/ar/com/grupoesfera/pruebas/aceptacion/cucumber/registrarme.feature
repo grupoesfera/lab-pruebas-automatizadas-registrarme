@@ -11,7 +11,7 @@ Feature: Registrarme y darme de alta en el sitio
       And ingreso el usuario maria@maria.com
       And ingreso la clave 1234
       And intento registrarme
-    Then me redirige a la vista login-caca
+    Then me redirige a la vista login
       And el usuario maria@maria.com con clave 1234 se crea
 
   Scenario: Si el usuario ya existe en el sitio, el mismo NO se da de alta y vuelve a la vista de registro
