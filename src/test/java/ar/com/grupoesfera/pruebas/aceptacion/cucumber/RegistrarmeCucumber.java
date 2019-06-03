@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RegistrarmeCucumber extends TestDeAceptacionCucumber {
-
+//Given que no existe el usuario maria@maria.com
     @Given("que no existe el usuario (.*)")
     public void noExiteUsuario(String usuario){
         // no hace nada
