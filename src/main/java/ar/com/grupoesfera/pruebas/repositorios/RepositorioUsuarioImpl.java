@@ -17,18 +17,18 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario {
 	public Usuario consultarUsuario(Usuario usuario) {
 
 		final Session session = sessionFactory.getCurrentSession();
-		final Query query = session.createQuery("from Usuario where email=:email and password=:password");
+		final Query<Usuario> query = session.createQuery("from Usuario where email=:email and password=:password", Usuario.class);
 		query.setParameter("email", usuario.getEmail());
 		query.setParameter("password", usuario.getPassword());
-		return (Usuario) query.uniqueResult();
+		return query.uniqueResult();
 	}
 
 	@Override
 	public Usuario buscarPor(String email) {
 		final Session session = sessionFactory.getCurrentSession();
-		final Query query = session.createQuery("from Usuario where email=:email");
+		final Query<Usuario> query = session.createQuery("from Usuario where email=:email", Usuario.class);
 		query.setParameter("email", email);
-		return (Usuario) query.uniqueResult();
+		return query.uniqueResult();
 	}
 
 	@Override
