@@ -1,13 +1,16 @@
 package ar.com.grupoesfera.pruebas.aceptacion;
 
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.pages.PageObject;
+import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.junit.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-import java.util.concurrent.TimeUnit;
+import net.thucydides.core.annotations.Managed;
 
 public abstract class TestDeAceptacion  {
 
@@ -17,8 +20,12 @@ public abstract class TestDeAceptacion  {
     protected String urlBase = "http://localhost:" + port + "/registrarme";
 
     public TestDeAceptacion() {
+        
+        ResourceBundle properties = ResourceBundle.getBundle("test");
 
-        System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver-linux");
+        System.setProperty("webdriver.chrome.driver", properties.getString("webdriver.chrome.driver"));
+        System.setProperty("webdriver.chrome.silentOutput", properties.getString("webdriver.chrome.silentOutput"));
+        Logger.getLogger("org.openqa.selenium").setLevel(Level.WARNING);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         seleniumDriver = new ChromeDriver(options);

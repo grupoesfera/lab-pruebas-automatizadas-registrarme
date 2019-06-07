@@ -16,11 +16,11 @@
 					<form:input path="email" id="email" class="form-control" />
 					<form:input path="password" type="password" id="password" class="form-control"/>     		  
 					
-					<button id="btn-registrarme" class="btn btn-lg btn-primary btn-block" Type="Submit"/>Registrarme</button>
+					<button id="btn-registrarme" class="btn btn-lg btn-primary btn-block" Type="Submit">Registrarme</button>
 				</form:form>
 
 				<c:if test="${not empty error}">
-			        <h4><span>${error}</span></h4>
+			        <h4><span id="error">${error}</span></h4>
 			        <br>
 		        </c:if>	
 			</div>
