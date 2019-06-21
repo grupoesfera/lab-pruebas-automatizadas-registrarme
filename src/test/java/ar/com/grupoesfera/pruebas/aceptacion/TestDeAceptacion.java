@@ -20,7 +20,7 @@ public abstract class TestDeAceptacion  {
     protected String urlBase = "http://localhost:" + port + "/registrarme";
 
     public TestDeAceptacion() {
-        
+
         ResourceBundle properties = ResourceBundle.getBundle("test");
 
         System.setProperty("webdriver.chrome.driver", properties.getString("webdriver.chrome.driver"));
